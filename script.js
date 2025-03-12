@@ -15,14 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Dark mode toggle
     const toggleButton = document.createElement("button");
     toggleButton.textContent = "Toggle Dark Mode";
-    toggleButton.style.position = "fixed";
-    toggleButton.style.top = "10px";
-    toggleButton.style.right = "10px";
-    toggleButton.style.padding = "10px";
-    toggleButton.style.background = "#007bff";
-    toggleButton.style.color = "white";
-    toggleButton.style.border = "none";
-    toggleButton.style.cursor = "pointer";
+    toggleButton.classList.add("toggle-button");
     document.body.appendChild(toggleButton);
     
     toggleButton.addEventListener("click", function () {
@@ -38,17 +31,35 @@ document.addEventListener("DOMContentLoaded", function () {
     
     const achievementsButton = document.createElement("button");
     achievementsButton.textContent = "Show Achievements";
-    achievementsButton.style.position = "fixed";
-    achievementsButton.style.top = "50px";
-    achievementsButton.style.right = "10px";
-    achievementsButton.style.padding = "10px";
-    achievementsButton.style.background = "#28a745";
-    achievementsButton.style.color = "white";
-    achievementsButton.style.border = "none";
-    achievementsButton.style.cursor = "pointer";
+    achievementsButton.classList.add("achievements-button");
     document.body.appendChild(achievementsButton);
     
     achievementsButton.addEventListener("click", function () {
         alert("Achievements:\n" + achievements.join("\n"));
     });
+    
+    // Apply CSS for buttons
+    const style = document.createElement("style");
+    style.textContent = `
+        .toggle-button, .achievements-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .achievements-button {
+            top: 50px;
+            background: #28a745;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+    `;
+    document.head.appendChild(style);
 });
